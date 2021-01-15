@@ -53,6 +53,10 @@ class Game():
             monster.forward()
             monster.update_health_bar(screen)
 
+        # Recuperer les comets de notre jeu
+        for comet in self.comet_event.all_comet:
+            comet.fall()
+
         # appliquer les images du groupe projectile
         self.player.all_projectile.draw(screen)
 
