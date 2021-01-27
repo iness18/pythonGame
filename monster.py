@@ -19,12 +19,16 @@ class Monster(pygame.sprite.Sprite):
         # Infliger les dégats
         self.health -= amount
 
+
         # verifier le nombre de pts de vie
         if self.health <= 0:
             # reapparaitre le monstre
             self.rect.x = 1000 + random.randint(0, 300)
             self.health = self.max_health
             self.velocity = random.randint(1, 3)
+
+        if self.game.comet_event.is_full_loaded():
+            self.game.all_monster.remove(self)
 
     def update_health_bar(self, surface):
         # Dessiner les barres de vie

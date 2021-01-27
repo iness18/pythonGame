@@ -7,7 +7,11 @@ class CometFallEvent:
     # creer un compteur
     def __init__(self, game):
         self.percent = 0
+<<<<<<< HEAD
         self.percent_speed = 20
+=======
+        self.percent_speed = 30
+>>>>>>> 4248a0bb57e95b467173f5f89bdbb38f7a5366d8
         self.game = game
         self.fall_mode = False
 
@@ -27,10 +31,18 @@ class CometFallEvent:
         self.all_comet.add(Comet(self))
 
     def attempt_fall(self):
+<<<<<<< HEAD
         # si jauge complete
         if self.is_full_loaded() and len(self.game.all_monster) == 0:
             self.meteor_fall()
             self.fall_mode = True  # pour activer l'évent
+=======
+        #si jauge complete
+        if self.is_full_loaded() and len(self.game.all_monster) == 0:
+            self.meteor_fall()
+            self.reset_percent()
+            self.fall_mode = True
+>>>>>>> 4248a0bb57e95b467173f5f89bdbb38f7a5366d8
 
     def update_bar(self, surface):
 
