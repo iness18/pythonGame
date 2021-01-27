@@ -50,5 +50,6 @@ def load_animation_images(sprite_name):
 # def un dictionnaire pour contenir les images chargées des sprites
 animations = {
     'mummy': load_animation_images('mummy'),
-    'player': load_animation_images('player')
+    'player': load_animation_images('player'),
+    'alien': load_animation_images('alien')
 }
