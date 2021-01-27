@@ -7,7 +7,7 @@ class CometFallEvent:
     # creer un compteur
     def __init__(self, game):
         self.percent = 0
-        self.percent_speed = 20
+        self.percent_speed = 5
         self.game = game
         self.fall_mode = False
 
@@ -24,7 +24,9 @@ class CometFallEvent:
         self.percent = 0
 
     def meteor_fall(self):
-        self.all_comet.add(Comet(self))
+        # boucle pour les valeurs entre 1 et 10
+        for i in range(1, 10):
+            self.all_comet.add(Comet(self)) # faire apparaitre 1 instance de comet
 
     def attempt_fall(self):
         #si jauge complete
@@ -36,8 +38,6 @@ class CometFallEvent:
     def update_bar(self, surface):
 
         self.add_percent()
-
-        self.attempt_fall()
 
         pygame.draw.rect(surface, (0, 0, 0), [0, surface.get_height() - 20, surface.get_width(), 10])
         pygame.draw.rect(surface, (202, 0, 42), [0, surface.get_height() - 20, (surface.get_width() / 100) * self.percent, 10])
