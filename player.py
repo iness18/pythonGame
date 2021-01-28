@@ -36,6 +36,8 @@ class Player(animation.AnimateSprite):
         # nouvelle instance de la class Projectile
         self.all_projectile.add(Projectile(self)) # ajout du projectile dans le groupe
         self.start_animation() == True  # demarre l'anim
+        # jouer le son
+        self.game.sound_manager.play("tir")
 
     def move_right(self):
         if not self.game.check_collision(self, self.game.all_monster):

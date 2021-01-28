@@ -4,6 +4,9 @@ from monster import Monster, Mummy, Alien
 from comet_event import CometFallEvent
 
 # class pour le jeu
+from sounds import SoundManager
+
+
 class Game():
     def __init__(self):
         # definir si le jeu a commence ou non
@@ -12,6 +15,7 @@ class Game():
         self.all_player = pygame.sprite.Group()
         self.all_player.add(self.player)
         self.all_monster = pygame.sprite.Group() # groupe de monstre
+        self.sound_manager = SoundManager()
         self.comet_event = CometFallEvent(self)
         self.font = pygame.font.Font("./assets/PottaOne.ttf", 20)
         self.score = 0
@@ -42,6 +46,8 @@ class Game():
         self.player.health = self.player.max_health
         self.is_playing = False
         self.score = 0
+        # jouer le son
+        self.sound_manager.play("game_over")
 
     def update(self, screen):
         # afficher le score sur l'ecran
