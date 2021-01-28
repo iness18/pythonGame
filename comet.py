@@ -16,22 +16,19 @@ class Comet(pygame.sprite.Sprite):
 
         # verifier si le nbr de comet et de 0
         if len(self.comet_event.all_comet) == 0:
-            print("event finish")
             # remettre la bar à 0
             self.comet_event.reset_percent()
             # faire apparaitre les monstre
-            self.comet_event.game.spawn_monster()
-            self.comet_event.game.spawn_monster()
+            self.comet_event.game.start()
+            self.comet_event.game.start()
 
     def fall(self):
         self.rect.y += self.velocity
         # ne tombe pas au sol
         if self.rect.y >= 500:
-            print("sol")
             self.remove()
 
             if len(self.comet_event.all_comet) == 0:
-                print("fin")
                 self.comet_event.reset_percent()
                 self.comet_event.fall_mode = False
 
