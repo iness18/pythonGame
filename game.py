@@ -13,6 +13,8 @@ class Game():
         self.all_player.add(self.player)
         self.all_monster = pygame.sprite.Group() # groupe de monstre
         self.comet_event = CometFallEvent(self)
+        self.font = pygame.font.Font("./assets/PottaOne.ttf", 20)
+        self.score = 0
         self.pressed = {}
 
 
@@ -28,6 +30,10 @@ class Game():
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
+    def add_score(self, points=10):
+        # ajouter le nbr ptn au score
+        self.score += points
+
     def game_over(self):
         # remettre le jeu a neuf et en attente
         self.all_monster = pygame.sprite.Group()
@@ -35,8 +41,13 @@ class Game():
         self.comet_event.reset_percent()
         self.player.health = self.player.max_health
         self.is_playing = False
+        self.score = 0
 
     def update(self, screen):
+        # afficher le score sur l'ecran
+        score_text = self.font.render(f"Score : {self.score}", 1, (0, 0, 0))
+        screen.blit(score_text, (20, 20))
+
         # Afficher l'image du joueur
         screen.blit(self.player.image, self.player.rect)
 
